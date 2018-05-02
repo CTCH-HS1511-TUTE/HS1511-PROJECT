@@ -1,5 +1,13 @@
 # HS1511-PROJECT
 
+# TODO
+1. Finish the stuff due last sunday by FRIDAY
+2. 
+3. 
+4. 
+
+# HOW TO USE GIT
+
 To set up a local copy of the git repository cd to where you want it and type:
 
 git clone https://github.com/CTCH-HS1511-TUTE/HS1511-PROJECT.git

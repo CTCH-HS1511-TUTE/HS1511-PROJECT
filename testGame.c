@@ -115,8 +115,6 @@ int main (int argc, char * argv[]) {
     assert (getStudents (testGame, UNI_A, STUDENT_MTV) == 1);
     assert (getStudents (testGame, UNI_A, STUDENT_MMONEY) == 1);
 
-    
-    
     printf ("Disposing testGame\n");
     disposeGame (testGame);
 

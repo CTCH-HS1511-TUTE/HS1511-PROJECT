@@ -10,11 +10,11 @@
 #include <assert.h>
 #include "Game.h"
 
-#define DEFAULT_DISCIPLINES {STUDENT_BQN, STUDENT_MMONEY, STUDENT_MJ, \
-                STUDENT_MMONEY, STUDENT_MJ, STUDENT_BPS, STUDENT_MTV, \
-                STUDENT_MTV, STUDENT_BPS, STUDENT_MTV, STUDENT_BQN, \
-                STUDENT_MJ, STUDENT_BQN, STUDENT_THD, STUDENT_MJ, \
-                STUDENT_MMONEY, STUDENT_MTV, STUDENT_BQN, STUDENT_BPS}
+#define DEFAULT_DISCIPLINES { STUDENT_BQN, STUDENT_MMONEY, STUDENT_MJ, \
+    STUDENT_MMONEY, STUDENT_MJ, STUDENT_BPS, STUDENT_MTV, \
+    STUDENT_MTV, STUDENT_BPS, STUDENT_MTV, STUDENT_BQN, \
+    STUDENT_MJ, STUDENT_BQN, STUDENT_THD, STUDENT_MJ, \
+    STUDENT_MMONEY, STUDENT_MTV, STUDENT_BQN, STUDENT_BPS }
 #define DEFAULT_DICE {9,10,8,12,6,5,3,11,3,11,4,6,4,7,9,2,8,10,5}
 
 int main (int argc, char * argv[]) { 
@@ -23,7 +23,7 @@ int main (int argc, char * argv[]) {
     printf ("Creating testGame\n");
     Game testGame = newGame (disciplines, dice);
 
-    printf ("Test getDiscipline");
+    printf ("Testing getDiscipline");
     assert (getDiscipline (testGame, 0) == STUDENT_BQN);
     assert (getDiscipline (testGame, 1) == STUDENT_MMONEY);
     assert (getDiscipline (testGame, 2) == STUDENT_MJ);
@@ -44,7 +44,7 @@ int main (int argc, char * argv[]) {
     assert (getDiscipline (testGame, 17) == STUDENT_BQN);
     assert (getDiscipline (testGame, 18) == STUDENT_BPS);
 
-    printf ("Test getDiceValue\n");
+    printf ("Testing getDiceValue\n");
     assert (getDiceValue (testGame, 0) == 9);
     assert (getDiceValue (testGame, 1) == 10);
     assert (getDiceValue (testGame, 2) == 8);
@@ -65,15 +65,58 @@ int main (int argc, char * argv[]) {
     assert (getDiceValue (testGame, 17) == 10);
     assert (getDiceValue (testGame, 18) == 5);
 
-    printf ("Test getMostARCS\n");
-    assert (getMostARCS (testGame) == NO_ONE);
+    printf ("Testing getMostARCs\n");
+    assert (getMostARCs (testGame) == NO_ONE);
+    
+    printf ("Testing getMostPublications\n");
+    assert (getMostPublications (testGame) == NO_ONE);
 
-    printf ("Test getTurnNumber\n");
+    printf ("Testing getTurnNumber\n");
     assert (getTurnNumber (testGame) == -1);
 
-    printf ("Test getWhoseTurn\n");
+    printf ("Testing getWhoseTurn\n");
     assert (getWhoseTurn (testGame) == NO_ONE);
 
+    printf ("Testing getKPIpoints\n");
+    assert (getKPIpoints (testGame, UNI_A) == 0);
+    assert (getKPIpoints (testGame, UNI_B) == 0);
+    assert (getKPIpoints (testGame, UNI_C) == 0);
+
+    printf ("Testing getARCs\n");
+    assert (getARCs (testGame, UNI_A) == 0);
+    assert (getARCs (testGame, UNI_B) == 0);
+    assert (getARCs (testGame, UNI_C) == 0);
+ 
+    printf ("Testing getGO8s\n");
+    assert (getGO8s (testGame, UNI_A) == 0);
+    assert (getGO8s (testGame, UNI_B) == 0);
+    assert (getGO8s (testGame, UNI_C) == 0);
+
+    printf ("Testing getCampuses\n");
+    assert (getCampuses (testGame, UNI_A) == 0);
+    assert (getCampuses (testGame, UNI_B) == 0);
+    assert (getCampuses (testGame, UNI_C) == 0);
+    
+    printf ("Testing getIPs\n");
+    assert (getIPs (testGame, UNI_A) == 0);
+    assert (getIPs (testGame, UNI_B) == 0);
+    assert (getIPs (testGame, UNI_C) == 0);
+    
+    printf ("Testing getPublications\n");
+    assert (getPublications (testGame, UNI_A) == 0);
+    assert (getPublications (testGame, UNI_B) == 0);
+    assert (getPublications (testGame, UNI_C) == 0);
+    
+    printf ("Testing getStudents\n");
+    assert (getStudents (testGame, UNI_A, STUDENT_THD) == 0);
+    assert (getStudents (testGame, UNI_A, STUDENT_BPS) == 3);
+    assert (getStudents (testGame, UNI_A, STUDENT_BQN) == 3);
+    assert (getStudents (testGame, UNI_A, STUDENT_MJ) == 1);
+    assert (getStudents (testGame, UNI_A, STUDENT_MTV) == 1);
+    assert (getStudents (testGame, UNI_A, STUDENT_MMONEY) == 1);
+
+    
+    
     printf ("Disposing testGame\n");
     disposeGame (testGame);
 

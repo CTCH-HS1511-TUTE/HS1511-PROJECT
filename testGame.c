@@ -23,6 +23,8 @@ int main (int argc, char * argv[]) {
     printf ("Creating testGame\n");
     Game testGame = newGame (disciplines, dice);
 
+    printf ("===TESTING STARTING CONFIGURATION===\n");
+
     printf ("Testing getDiscipline");
     assert (getDiscipline (testGame, 0) == STUDENT_BQN);
     assert (getDiscipline (testGame, 1) == STUDENT_MMONEY);
@@ -114,7 +116,73 @@ int main (int argc, char * argv[]) {
     assert (getStudents (testGame, UNI_A, STUDENT_MJ) == 1);
     assert (getStudents (testGame, UNI_A, STUDENT_MTV) == 1);
     assert (getStudents (testGame, UNI_A, STUDENT_MMONEY) == 1);
+    assert (getStudents (testGame, UNI_B, STUDENT_THD) == 0);
+    assert (getStudents (testGame, UNI_B, STUDENT_BPS) == 3);
+    assert (getStudents (testGame, UNI_B, STUDENT_BQN) == 3);
+    assert (getStudents (testGame, UNI_B, STUDENT_MJ) == 1);
+    assert (getStudents (testGame, UNI_B, STUDENT_MTV) == 1);
+    assert (getStudents (testGame, UNI_B, STUDENT_MMONEY) == 1);
+    assert (getStudents (testGame, UNI_C, STUDENT_THD) == 0);
+    assert (getStudents (testGame, UNI_C, STUDENT_BPS) == 3);
+    assert (getStudents (testGame, UNI_C, STUDENT_BQN) == 3);
+    assert (getStudents (testGame, UNI_C, STUDENT_MJ) == 1);
+    assert (getStudents (testGame, UNI_C, STUDENT_MTV) == 1);
+    assert (getStudents (testGame, UNI_C, STUDENT_MMONEY) == 1);
 
+    printf("===STARTING GAME===\n");
+
+    printf ("Testing throwDice to start game\n");
+    int diceRandVal = 5;
+    throwDice (testGame, diceRandVal);
+
+    printf ("Testing that getStudents updates\n"); 
+    assert (getStudents (testGame, UNI_A, STUDENT_MTV) == 1 + 1);
+
+    printf ("Testing getTurnNumber\n");
+    assert (getTurnNumber (testGame) == 0);
+    
+    printf ("Testing getWhoseTurn\n");
+    assert (getWhoseTurn (testGame) == UNI_A);
+    
+    printf ("throwDice of value 7\n");
+    int diceRandVal = 7;
+    throwDice (testGame, diceRandVal);
+    
+    printf ("Testing that MTV and MMONEY switch to THD\n");
+    assert (getStudents (testGame, UNI_A, STUDENT_MTV) == 0);
+    assert (getStudents (testGame, UNI_A, STUDENT_MMONEY) == 0);
+    assert (getStudents (testGame, UNI_A, STUDENT_THD == 2 + 1));
+    assert (getStudents (testGame, UNI_B, STUDENT_MTV) == 0);
+    assert (getStudents (testGame, UNI_B, STUDENT_MMONEY) == 0);
+    assert (getStudents (testGame, UNI_B, STUDENT_THD == 2 + 1));
+    assert (getStudents (testGame, UNI_C, STUDENT_MTV) == 0);
+    assert (getStudents (testGame, UNI_C, STUDENT_MMONEY) == 0);
+    assert (getStudents (testGame, UNI_C, STUDENT_THD == 2 + 1));
+
+    printf("Testing isLegalAction\n");
+    action turnAction;
+    turnAction.actionCode = PASS;
+    assert (isLegalAction (testGame, turnAction) == TRUE);
+    turnAction.actionCode = START_SPINOFF;
+    assert (isLegalAction (testGame, turnAction) == FALSE);
+    turnAction.actionCode = OBTAIN_IP_PATENT;
+    assert (isLegalAction (testGame, turnAction) == FALSE);
+    turnAction.actionCode = OBTAIN_PUBLICATION;
+    assert (isLegalAction (testGame, turnAction) == FALSE);
+
+    printf("Testing PASS");
+    makeAction (testGame, turnAction);
+   
+    printf ("Testing getTurnNumber\n");
+    assert (getTurnNumber (testGame) == 1);
+    
+    printf ("Testing getWhoseTurn\n");
+    assert (getWhoseTurn (testGame) == UNI_B);
+
+    printf ("throwDice of value 5\n");
+    int diceRandVal = 7;
+    throwDice (testGame, diceRandVal);
+ 
     printf ("Disposing testGame\n");
     disposeGame (testGame);
 

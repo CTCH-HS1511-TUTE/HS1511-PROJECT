@@ -18,15 +18,6 @@
 #define DEFAULT_DICE {9,10,8,12,6,5,3,11,3,11,4,6,4,7,9,2,8,10,5}
 
 int main (int argc, char * argv[]) { 
-<<<<<<< HEAD
-    printf("Testing the next turn thingo");
-    Game newBoard;
-    int playerID = getWhoseTurn(newBoard);
-    makeAction(newBoard, PASS);
-    assert(playerID != getWhoseTurn(newBoard));
-
-    printf("All tests passed! You are awesome!");
-=======
     int disciplines[] = DEFAULT_DISCIPLINES;
     int dice[] = DEFAULT_DICE;
     printf ("Creating testGame\n");
@@ -128,6 +119,5 @@ int main (int argc, char * argv[]) {
     disposeGame (testGame);
 
     printf("All tests passed, you are AWESOME!\n");
->>>>>>> 1df0e847f22bc773f01e5e475e731ebae75c39b8
     return EXIT_SUCCESS;
 }

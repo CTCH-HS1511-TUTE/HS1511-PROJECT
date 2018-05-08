@@ -1,5 +1,6 @@
 # HS1511-PROJECT
 
+<<<<<<< HEAD
 # TODO
 1. Finish the stuff due last sunday by FRIDAY
 2. 
@@ -8,6 +9,14 @@
 
 # HOW TO USE GIT
 
+=======
+# TODO LIST
+1. Create struct for Game.c - Lucca - Thursday
+2. Finish testGame.c - Alistair - Saturday
+3. Start on Game.c? - Zac - Saturday
+
+# HOW TO USE GIT
+>>>>>>> 1df0e847f22bc773f01e5e475e731ebae75c39b8
 To set up a local copy of the git repository cd to where you want it and type:
 
 git clone https://github.com/CTCH-HS1511-TUTE/HS1511-PROJECT.git

@@ -15,7 +15,7 @@ int main (int argc, char * argv[]) {
     int playerID = getWhoseTurn(newBoard);
     makeAction(newBoard, PASS);
     assert(playerID != getWhoseTurn(newBoard));
-    
+
     printf("All tests passed! You are awesome!");
     return EXIT_SUCCESS;
 }

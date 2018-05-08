@@ -9,10 +9,17 @@
 #include <stdlib.h>
 #include "Game.h"
 
+#define MAX_UNIVERSITIES 123456789
+
 typedef struct _region {
     int regionID;
     int discipline;
 } region;
+
+typedef struct _player {
+    int playerID;
+    int university[MAX_UNIVERSITIES];
+} player;
 
 typedef struct _game {
     region regions[NUM_REGIONS];
